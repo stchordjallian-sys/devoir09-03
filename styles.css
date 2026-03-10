@@ -39,7 +39,7 @@ font-weight: bold;
 }
 
 .cadre {
-border: solid 1px white;
+
 border-radius: 5px;
 padding: 5px 10px;
 }
@@ -55,7 +55,7 @@ margin-right: 25px;
 button {
 background: none;
 border-radius: 6px;
-border: none;
+border: 1px solid #ffffff;
 margin-right: 5px;
 color: white;
 cursor: pointer;
@@ -98,4 +98,58 @@ border-radius: 8px;
 color: white;
 cursor: pointer;
 margin-bottom: 10px;
+}
+.selected{
+background:#2f80ed;
+}
+
+#words{
+max-width:800px;
+line-height:2;
+margin-bottom:20px;
+}
+
+.word{
+margin-right:6px;
+}
+
+.correct{
+color:#4CAF50;
+}
+
+.incorrect{
+color:#ff4d4d;
+}
+
+#inputField{
+width:400px;
+padding:10px;
+font-size:18px;
+border-radius:6px;
+border:none;
+outline:none;
+}
+
+#restart{
+margin-top:20px;
+display:none;
+}#words{
+max-width:800px;
+line-height:35px;
+margin-bottom:20px;
+}
+
+.word{
+margin-right:8px;
+opacity:0.5;
+}
+
+.correct{
+color:#4CAF50;
+opacity:1;
+}
+
+.incorrect{
+color:#ff4d4d;
+opacity:1;
 }

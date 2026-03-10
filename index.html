@@ -9,7 +9,6 @@
 
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
 <div class="logo">
 <img src="Vector (8).png" class="coco">
@@ -19,18 +18,18 @@
 <ul class="nav-links">
 <li><img src="Trophy Icon.svg"></li>
 <li>
-<a href="#">Personal best: <span class="gras">92 WPM</span></a>
+<a>Personal best: <span class="gras">92 WPM</span></a>
 </li>
 </ul>
 </nav>
 
+
 <nav class="navbar">
+
 <div class="logo">
-
-<a class="moa">WPM: <span class="gras">0</span></a>
-<a class="moa">Accuracy: <span class="gras">100%</span></a>
-<a>Time: <span class="gras">0:60</span></a>
-
+<a class="moa">WPM: <span id="wpm" class="gras">0</span></a>
+<a class="moa">Accuracy: <span id="accuracy" class="gras">100</span>%</a>
+<a>Time: <span id="time" class="gras">60</span></a>
 </div>
 
 <ul class="nav-links">
@@ -40,7 +39,7 @@
 <li>
 <div class="box">
 
-<button><div class="cadre">Easy</div></button>
+<button id="easyBtn" class="selected"><div class="cadre">Easy</div></button>
 <button><div class="cadre">Medium</div></button>
 <button><div class="cadre">Hard</div></button>
 
@@ -50,32 +49,150 @@
 </ul>
 </nav>
 
-<!-- ZONE DU TEST -->
+
 <div class="test-container">
 
 <div id="startScreen">
-
 <button id="startButton">Start Typing Test</button>
-
 <p>Or click the text and start typing</p>
-
 </div>
 
 <div class="typing-area">
 
+<div id="words"></div>
+
+<input id="inputField" type="text" autocomplete="off">
+
+<button id="restart">Restart</button>
 
 </div>
 
 </div>
+
 
 <script>
 
-const button = document.getElementById("startButton");
+const easyWords = [
+"chat","chien","pain","lait","eau","sucre","table","chaise","porte","mur",
+"main","pied","tête","nez","yeux","bras","jambe","dos",
+"ami","amie","père","mère","frère","sœur",
+"jour","nuit","matin","soir","hier","demain",
+"ici","là","oui","non",
+"bien","mal","vite","lent","haut","bas",
+"gros","petit","beau","laid","vrai","faux",
+"bon","mauvais","chaud","froid",
+"plein","vide","dur","mou",
+"clair","sombre","neuf","vieux"
+];
+
+const startButton = document.getElementById("startButton");
 const screen = document.getElementById("startScreen");
+const wordsDiv = document.getElementById("words");
+const input = document.getElementById("inputField");
+const restart = document.getElementById("restart");
 
-button.addEventListener("click", function(){
+const wpm = document.getElementById("wpm");
+const accuracy = document.getElementById("accuracy");
+const timeText = document.getElementById("time");
 
-screen.style.display = "none";
+let words = [];
+let index = 0;
+let correct = 0;
+let total = 0;
+let time = 60;
+let timer;
+
+function randomWord(){
+return easyWords[Math.floor(Math.random()*easyWords.length)];
+}
+
+function generateWords(){
+
+words = [];
+
+for(let i=0;i<80;i++){
+let word=randomWord();
+words.push(word);
+}
+
+wordsDiv.innerHTML="";
+
+words.forEach(word=>{
+const span=document.createElement("span");
+span.textContent=word;
+span.classList.add("word");
+wordsDiv.appendChild(span);
+});
+
+}
+
+startButton.addEventListener("click",()=>{
+
+screen.style.display="none";
+
+generateWords();
+
+input.focus();
+
+timer=setInterval(()=>{
+
+time--;
+timeText.textContent=time;
+
+if(time<=0){
+endGame();
+}
+
+},1000);
+
+});
+
+input.addEventListener("keydown",function(e){
+
+if(e.key===" "){
+
+e.preventDefault();
+
+const typed=input.value.trim();
+const target=words[index];
+const span=document.querySelectorAll(".word")[index];
+
+total++;
+
+if(typed===target){
+
+span.classList.add("correct");
+correct++;
+
+}else{
+
+span.classList.add("incorrect");
+
+}
+
+index++;
+
+wpm.textContent=correct;
+
+accuracy.textContent=Math.floor((correct/total)*100);
+
+input.value="";
+
+}
+
+});
+
+function endGame(){
+
+clearInterval(timer);
+input.disabled=true;
+restart.style.display="block";
+
+}
+
+restart.addEventListener("click",()=>{
+
+location.reload();
 
 });
 
