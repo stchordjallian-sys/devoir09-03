@@ -1,6 +1,8 @@
 body {
 	margin: 0;
 	font-family: Arial, sans-serif;
+	background-color: #242424;
+	color: white;
 }
 
 .navbar {
@@ -9,7 +11,6 @@ body {
 	align-items: center;
 	background-color: #121212;
 	padding: 0.5em 1em;
-	color: white;
 }
 
 .nav-links {
@@ -29,34 +30,20 @@ body {
 	color: #4ca6ff;
 }
 
-.hamburger {
-	display: none;
-	flex-direction: column;
-	gap: 5px;
-	cursor: pointer;
-}
-
-.hamburger span {
-	width: 25px;
-	height: 3px;
-	background-color: white;
-}
 .coco {
 	margin-right: 10px;
 }
-h2 {
-	color: #ffffff;
-}
+
 .gras {
 	font-weight: bold;
 }
 
 .cadre {
-	background-color: none;
-	border-style: solid;
+	border: solid 1px white;
 	border-radius: 5px;
-	margin-right: 4px;
+	padding: 5px 10px;
 }
+
 .box {
 	display: flex;
 }
@@ -64,12 +51,54 @@ h2 {
 .moa {
 	margin-right: 25px;
 }
-body {
-	background-color: #242424;
-}
+
 button {
 	background: none;
 	border-radius: 6px;
 	border: 1px solid #ffffff;
 	margin-right: 5px;
+	color: white;
+	cursor: pointer;
+}
+button:active {
+	font-size: 0, 5rem;
+}
+
+.test-container {
+	position: relative;
+	height: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.typing-area {
+	max-width: 800px;
+	text-align: center;
+	font-size: 20px;
+	opacity: 0.3;
+}
+
+#startScreen {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backdrop-filter: blur(8px);
+	background: rgba(0, 0, 0, 0.4);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 10;
+}
+
+#startButton {
+	padding: 12px 25px;
+	font-size: 16px;
+	background: #2f80ed;
+	border: none;
+	border-radius: 8px;
+	color: white;
+	cursor: pointer;
+	margin-bottom: 10px;
 }

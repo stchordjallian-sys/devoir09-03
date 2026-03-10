@@ -3,52 +3,64 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Barre de navigation</title>
+		<title>Typing Speed Test</title>
 		<link rel="stylesheet" href="styles.css" />
 	</head>
+
 	<body>
+		<!-- NAVBAR -->
 		<nav class="navbar">
 			<div class="logo">
 				<img src="Vector (8).png" class="coco" />
-				<img src="Title Container.png" alt="" />
+				<img src="Title Container.png" />
 			</div>
 
 			<ul class="nav-links">
+				<li><img src="Trophy Icon.svg" /></li>
 				<li>
-					<img src="Trophy Icon.svg" alt="" />
-				</li>
-				<li>
-					<a href="#">Personal best: <span class="gras"> 92 WPM </span></a>
+					<a href="#">Personal best: <span class="gras">92 WPM</span></a>
 				</li>
 			</ul>
 		</nav>
+
 		<nav class="navbar">
 			<div class="logo">
-				<a class="moa">WPM: <span class="gras"> 0 </span></a>
-
-				<a class="moa">Accuracy: <span class="gras"> 100% </span></a>
-
-				<a>Time: <span class="gras"> 0:60 </span></a>
+				<a class="moa">WPM: <span class="gras">0</span></a>
+				<a class="moa">Accuracy: <span class="gras">100%</span></a>
+				<a>Time: <span class="gras">0:60</span></a>
 			</div>
 
 			<ul class="nav-links">
-				<li>
-					<a> Difficulty : </a>
-				</li>
+				<li><a>Difficulty :</a></li>
+
 				<li>
 					<div class="box">
-						<button>
-							<div class="cadre"><a>Easy</a></div>
-						</button>
-						<button>
-							<div class="cadre"><a>Medium</a></div>
-						</button>
-						<button>
-							<div class="cadre"><a>Hard</a></div>
-						</button>
+						<button>Easy</button>
+						<button>Medium</button>
+						<button>Hard</button>
 					</div>
 				</li>
 			</ul>
 		</nav>
+
+		<!-- ZONE DU TEST -->
+		<div class="test-container">
+			<div id="startScreen">
+				<button id="startButton">Start Typing Test</button>
+
+				<p>Or click the text and start typing</p>
+			</div>
+
+			<div class="typing-area"></div>
+		</div>
+
+		<script>
+			const button = document.getElementById("startButton");
+			const screen = document.getElementById("startScreen");
+
+			button.addEventListener("click", function () {
+				screen.style.display = "none";
+			});
+		</script>
 	</body>
 </html>
